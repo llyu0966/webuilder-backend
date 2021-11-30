@@ -174,10 +174,12 @@ git push heroku main
 │       │   ├── themes.js
 │       │   └── userContext.js
 │       ├── <strong>pics</strong>
-│       │   ├── AboutUsPage.js
-│       │   ├── PostFormPage.js
-│       │   ├── PostsListPage.js
-│       │   └── ShowPostPage.js
+│       │   ├── avatar.svg
+│       │   ├── logo.png
+│       │   ├── weBuilder.png
+│       │   ├── weBuilder.svg
+│       │   ├── weBuilder(hover).svg
+│       │   └── WeBuilderLogo.png
 │       ├── reportWebVitals.js
 │       ├── serviceWorker.js
 │       └── setupTests.js
