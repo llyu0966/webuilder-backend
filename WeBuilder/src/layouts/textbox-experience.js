@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from 'react-bootstrap';
 
-class TextBox extends React.Component {
+class TextBoxExp extends React.Component {
     constructor(props) {
         super(props);
         this.state = { name:[] , description: [] };
@@ -93,4 +93,4 @@ class TextBox extends React.Component {
 }
 
 
-export default TextBox;
+export default TextBoxExp;

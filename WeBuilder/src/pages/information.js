@@ -4,15 +4,16 @@ import { Helmet } from 'react-helmet';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ReactDOM from 'react-dom';
 import TextBox from '../layouts/textbox';
 import TextBoxExp from '../layouts/textbox-experience';
 import TextBoxWPic from '../layouts/textbox-w-pic';
+import { FormControl, Form } from 'react-bootstrap';
 import { UserContext } from '../pages/userContext';
 import TextBoxAboutMe from "../layouts/textbox-aboutme";
 import TextBoxContactMe from "../layouts/textbox-contactme";
 import { ArrowLeftSquare } from "react-bootstrap-icons";
 import { ArrowRightSquare } from "react-bootstrap-icons";
-
 
 /*      
     handleAdd() {
@@ -51,7 +52,7 @@ function Information() {
         );
     } else {
         return (
-            <body>
+                            <body>
                     <Helmet>
                     <style>{'body { background: #6D44C5; }'}</style>
                     </Helmet>
@@ -60,11 +61,13 @@ function Information() {
                     <button onClick={() => {
                     history.push('/contactMe')}} href={'/contactMe'} id="back"><ArrowLeftSquare/></button>
                         <h1 className="enter-info">Enter Your Information</h1>
+                        <p className="enter-info-text">For each category you picked enter the text you would like to be shown!</p>
                     </span>
 
 
                     <Container className="info-page">
                     <div>
+                        <h2 className="enter-head"> About Me </h2>
                         <Row >
                             <TextBoxAboutMe category={msg.AboutMe} />
                         </Row>
@@ -74,32 +77,37 @@ function Information() {
 
                     <div>
                         {/*<Row><h3 className="enter-head">Education </h3></Row>*/}
-
+                      
                         <Row> <Col> <TextBox category={msg.Education} name="Education" /> </Col> </Row>
                     </div>
 
                     <div>
                         {/* <h3 className="enter-head">Experience </h3> */}
-
+                       
                         <Row> <Col> <TextBoxExp category={msg.Experience} name="Experience" /> </Col> </Row>
                     </div>
                     <div>
                         {/*<h3 className="enter-head">Projects </h3> */}
-
+                       
                         <Row> <Col> <TextBoxWPic category={msg.Projects} name="Projects" /> </Col> </Row>
                     </div>
                     <div>
                         {/*<Row><h3 className="enter-head">Contact Me </h3></Row>*/}
-
+                        <h2 className="enter-head"> Contact Me </h2>
                         <Row> <Col> <TextBoxContactMe category={msg.ContactMe} name="Contact Me" /> </Col> </Row>
                     </div>
-                </Container>
-                <span>
-                <button onClick={() => {
-                    history.push('/contactMe')}} href={'/contactMe'} id="next"><ArrowRightSquare/></button>
-                </span>
-                                  
 
+
+                    
+                    
+                </Container>
+                
+                               
+                <button onClick={() => {
+                                history.push('/demoPortfolio')
+                                }} href={'/demoPortfolio'} id="next" className="next-demo"><ArrowRightSquare/></button>
+               
+                                
 
                 </body >
 

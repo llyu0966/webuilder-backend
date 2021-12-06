@@ -2,13 +2,11 @@ nav{
     background-color: rgb(34, 34, 33);
 
 }
-body{
+.body-demo{
     background-color: rgb(34, 34, 33) ;
     color: rgb(211, 209, 209);
 }
-.yellow:hover{
-    color : rgb(204, 166, 255);
-}
+
 
 .intro{
     padding-bottom: 4em;
@@ -71,12 +69,24 @@ h3{
 .edu{
     font-size: 1.1em;
 }
-.projects, .projs, .graphDesign{
+.projects, .projs, .graphDesign, .contact{
     padding-top: 3em;
 }
 
 .projDes{
     font-size: 1.2em;
+}
+.contact{
+    text-align: center;
+    display: block;
+    margin-bottom: 4em;
+}
+.contactImg{
+    padding: 1em;
+}
+.contactI{
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .text{
@@ -107,12 +117,7 @@ h3{
     text-decoration: none;
   }
 
-footer{
-    padding-top: 2em;
-    padding-bottom: 2em;
-    text-align: center;
-    color:rgb(122, 121, 120);
-}
+
 .thumb{
     border: rgba(241, 198, 241);
     border-style:solid;

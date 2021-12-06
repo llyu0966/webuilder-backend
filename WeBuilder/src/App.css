@@ -387,6 +387,12 @@ textarea {
   text-align: center;
   padding: 10px;
 }
+.enter-info-text{
+  font-size: 30px !important;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
 .enter-head{
   text-align: left;
   color: white;
