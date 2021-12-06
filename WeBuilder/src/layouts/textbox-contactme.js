@@ -1,38 +1,31 @@
-import React, { useState } from "react";
-import { Helmet } from 'react-helmet';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ReactDOM from 'react-dom';
-import { Plus } from 'react-bootstrap-icons';
-
+import React from "react";
+import { Form } from 'react-bootstrap';
 
 class TextBoxContactMe extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name:[] , description: [] };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = { name: [], description: [] };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
- 
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.values.join(', '));
+        event.preventDefault();
+    }
 
+    render() {
+        return (
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Label className="h2 enter-head">Enter Your Contact Info:</Form.Label>
+            <br/>
+            <input type="text" name={''} className="github-input link-input" placeholder="GitHub Link" />
+            <input type="text" name={''} className="linkedin-input link-input" placeholder="LinkedIn Link" />
+            <input type="text" name={''} className="email-input link-input" placeholder="Email Link" />
 
- 
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.values.join(', '));
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-        <form>
-            <input type="text" name={''}   className="github-input" placeholder="GitHub Link" />
-            <input type="text" name={''}   className="linkedin-input" placeholder="LinkedIn Link" />
-            <input type="text" name={''}   className="email-input" placeholder="Email Link" />
-        </form>
-    );
-  }
+            <input type="submit" value="Save" />
+        </Form>
+        );
+    }
 }
 
 

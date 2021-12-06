@@ -1,89 +1,79 @@
-import React, { useState } from "react";
-import { Helmet } from 'react-helmet';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ReactDOM from 'react-dom';
-import { Plus } from 'react-bootstrap-icons';
-import {FormControl,Form} from 'react-bootstrap';
+import React from "react";
+import Cloudinary from './cloudinary';
+import { Form } from 'react-bootstrap';
 
 
 class TextBoxWPic extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name:[] , description: [] };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  createName(){
-     return this.state.name.map((el, i) => 
-         <div key={i}>
-                <Form.Group controlId="formFile" className="mb-3 input-file section-description">
-                <Form.Label>Input Project Picture</Form.Label>
-                <Form.Control type="file" />
-                </Form.Group> 
-    	    <input type="text" name={el||''}   className="name-input" placeholder="Header Name" onChange={this.handleChangeName.bind(this, i)} />
-
-         </div>  
-      
-     )
-  }
-  createDescription(){
-       return  this.state.name.map((el, i) => 
-           <div key={i}>
-            <textarea  description={el||''}  className="description-input" placeholder="Description" onChange={this.handleChangeDescription.bind(this, i)} rows={5}/>
-            
-         </div> 
-       )
+    constructor(props) {
+        super(props);
+        this.state = { name: [], description: [] /*imageUrl: null, imageAlt: null,*/ };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-  handleChangeName(i, event) {
-     let name= [...this.state.name];
-     name[i] = event.target.value;
-     this.setState({ name });
-  }
-    handleChangeDescription(i, event) {
-     let description = [...this.state.description];
-     description[i] = event.target.value;
-     this.setState({ description });
-  }
-  
-  addClick(){
-            
-    /*TextBox.setState(prevState => ({ values: [...prevState.values, '']}))*/
-    this.setState(prevState => ({ name: [...prevState.name, '']}))
-    this.setState(prevState => ({ description: [...prevState.description, '']}))
-  }
-  
-  removeClick(i){
-     let name = [...this.state.name];
-     name.splice(i,1);
-     this.setState({ name });
-
-    let description = [...this.state.description];
-    description.splice(i,1);
-    this.setState({ description });
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.values.join(', '));
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-           
-
-          {this.createName()}  
-          <br/>
-          {this.createDescription()} 
-          <input type='button' value='remove' onClick={this.removeClick.bind(this)}/>      
-          <input type='button' value='add' onClick={this.addClick.bind(this)}/>
-          <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+    createUI(){
+        return this.state.name.map((el, i) => 
+          
+            <div key={i}>
+              <Cloudinary />
+              <input type="text" name={el||''}   className="name-input" placeholder="Header Name" onChange={this.handleChangeName.bind(this, i)} />
+              <textarea  description={el||''}  className="description-input" placeholder="Description" onChange={this.handleChangeDescription.bind(this, i)} rows={5}/>
+            </div>
+          )
+          
+      }
+    
+      handleChangeName(i, event) {
+         let name= [...this.state.name];
+         name[i] = event.target.value;
+         this.setState({ name });
+      }
+        handleChangeDescription(i, event) {
+         let description = [...this.state.description];
+         description[i] = event.target.value;
+         this.setState({ description });
+      }
+      
+      addClick(){
+                
+        /*TextBox.setState(prevState => ({ values: [...prevState.values, '']}))*/
+        this.setState(prevState => ({ name: [...prevState.name, '']}))
+        this.setState(prevState => ({ description: [...prevState.description, '']}))
+      }
+      
+      removeClick(i){
+         let name = [...this.state.name];
+         name.splice(i,1);
+         this.setState({ name });
+    
+        let description = [...this.state.description];
+        description.splice(i,1);
+        this.setState({ description });
+      }
+    
+      handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.name.join(', '));
+        event.preventDefault();
+      }
+    
+      render() {
+        if (this.props.category) {
+        return (
+          <Form onSubmit={this.handleSubmit}>
+               <Form.Label className="h2 enter-head">Project</Form.Label>
+    
+              {this.createUI()}  
+              <br/>
+    
+              <input type='button' value='remove' onClick={this.removeClick.bind(this)}/>      
+              <input type='button' value='add' onClick={this.addClick.bind(this)}/>
+              <input type="submit" value="Save" />
+              
+          </Form>
+        );
+      } else {
+        return (null);
+      }
+    }
 }
 
 

@@ -12,7 +12,7 @@ class ThemeLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
-            layout: 1,
+            layout: 0,
         }
     }
 
@@ -20,27 +20,27 @@ class ThemeLayouts extends Component {
         this.setState({
             bgColor_One: "rgba(30, 139, 195, 1)",
             bgColor_Two: "rgba(153, 42, 42, 0.01)",
-            layout: 2
+            layout: 1
         });
-        return this.saveLayout(event);
+        return this.saveLayout(1);
     }
 
     boxClick_Two = (event) => {
         this.setState({
             bgColor_One: "rgba(153, 42, 42, 0.01)",
             bgColor_Two: "rgba(30, 139, 195, 1)",
-            layout: 1
+            layout: 2
         });
-        return this.saveLayout(event);
+        return this.saveLayout(2);
     }
 
-    saveLayout = (event) => {
+    saveLayout = (layout) => {
         fetch("/api/layouts/1", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({layout: this.state.layout}),
+          body: JSON.stringify({layout: layout}),
         })
           .then(res => {
             if(res.ok) {

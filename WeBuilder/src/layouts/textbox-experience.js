@@ -77,7 +77,7 @@ class TextBox extends React.Component {
       render() {
         return (
           <Form onSubmit={this.handleSubmit}>
-              <Form.Label className="h2 enter-head">Education</Form.Label>
+              <Form.Label className="h2 enter-head">Experience</Form.Label>
               {this.createUI()}  
               <br/>
               {/* <button onClick={this.addClick.bind(this)}><Plus/></button>

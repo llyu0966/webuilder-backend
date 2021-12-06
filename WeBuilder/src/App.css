@@ -426,6 +426,19 @@ textarea {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.information-form{
+  width: 100% !important;
+}
+.link-input{
+  padding-right: 100px;
+  margin-right: 3em;
+}
+.submit-info{
+  margin-top: 3em;
+  align-content:flex-end;
+  width: 100px;
+  height: 60px;
+}
 /*-------------------------------TextBox-Components------------------------*/
 .form-control{
   width: 50% !important;

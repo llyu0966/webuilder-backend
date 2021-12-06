@@ -12,7 +12,7 @@ class ContactMeLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
-            layout: 1,
+            layout: 0,
         }
     }
 
@@ -20,27 +20,27 @@ class ContactMeLayouts extends Component {
         this.setState({
             bgColor_One: "rgba(30, 139, 195, 1)",
             bgColor_Two: "rgba(153, 42, 42, 0.01)",
-            layout: 2
+            layout: 1
         });
-        setTimeout(this.saveLayout(event), 1000);
+        this.saveLayout(1);
     }
 
     boxClick_Two = (event) => {
         this.setState({
             bgColor_One: "rgba(153, 42, 42, 0.01)",
             bgColor_Two: "rgba(30, 139, 195, 1)",
-            layout: 1
+            layout: 2
         });
-        setTimeout(this.saveLayout(event), 1000);
+        this.saveLayout(2);
     }
 
-    saveLayout = (event) => {
+    saveLayout = (layout) => {
         fetch("/api/layouts/6", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({layout: this.state.layout}),
+          body: JSON.stringify({layout: layout}),
         })
           .then(res => {
             if(res.ok) {
@@ -97,9 +97,9 @@ class ContactMeLayouts extends Component {
                                 <div className="card-block px-2">
                                     <Card.Title>Contact Me</Card.Title>
                                     
-                                    <a href={() => false} style={{ marginRight: "10%" }} className="fa fa-github"></a>
-                                    <a href={() => false} style={{ marginRight: "10%" }} className="fa fa-linkedin"></a>
-                                    <a href={() => false} style={{ marginRight: "10%" }} className="fa fa-envelope"></a>
+                                    <a href={() => false} style={{ marginRight: "8%" }} className="fa fa-github"></a>
+                                    <a href={() => false} style={{ marginRight: "8%" }} className="fa fa-linkedin"></a>
+                                    <a href={() => false} style={{ marginRight: "8%" }} className="fa fa-envelope"></a>
                                     
                                 </div>
                         </div>         
