@@ -12,6 +12,7 @@ class ExperienceLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
+            name: "experience",
             layout: 0,
         }
     }
@@ -35,7 +36,7 @@ class ExperienceLayouts extends Component {
     }
 
     saveLayout = (layout) => {
-        fetch("/api/layouts/4", {
+        fetch("/api/layouts/experience", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -62,13 +63,19 @@ class ExperienceLayouts extends Component {
       }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
+        fetch("/api/layouts", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
+          })
+            .then(res => res.json())
+            .catch(err => {
+              this.setState({
+                notFound: true,
+              });
             });
-          });
     }
     
 

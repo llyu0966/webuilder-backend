@@ -1,11 +1,15 @@
 import React from "react";
-import { Form } from 'react-bootstrap';
 
 class TextBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name:[] , description: [] };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = 
+        { 
+          name:[], 
+          description: [], 
+          error: false,
+          success: false,
+        };
       }
     
       createUI(){
@@ -16,6 +20,34 @@ class TextBox extends React.Component {
             </div>
           )
       
+      }
+
+      saveEducation = (event) => {
+        fetch("/api/education/", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({header: this.state.name[this.state.name.length-1], description: this.state.description[this.state.description.length-1]}),
+        })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
+            }
+    
+            throw new Error('Education validation');
+          })
+          .then(education => {
+            this.setState({
+              success: true,
+            });
+          })
+          .catch(err => {
+            this.setState({
+              error: true,
+            });
+          });
       }
       
       /*
@@ -66,18 +98,22 @@ class TextBox extends React.Component {
         description.splice(i,1);
         this.setState({ description });
       }
-    
-      handleSubmit(event) {
-       /* alert('A name was submitted: ' + this.state.values.join(', '));
-        event.preventDefault();
-        */
-      }
+      
     
     
       render() {
+        let errorMessage = null;
+        if(this.state.error) {
+          errorMessage = (
+            <div className="alert alert-danger">
+              "There was an error saving this text."
+            </div>
+          );
+        }
         return (
-          <Form onSubmit={this.handleSubmit}>
-              <Form.Label className="h2 enter-head">Education</Form.Label>
+          <div>
+              <p className="h2 enter-head">Education</p>
+              { errorMessage }
               {this.createUI()}  
               <br/>
               {/* <button onClick={this.addClick.bind(this)}><Plus/></button>
@@ -85,9 +121,9 @@ class TextBox extends React.Component {
               <input type='button' value='remove' onClick={this.removeClick.bind(this)}/>   
               <input type='button' value='add' onClick={this.addClick.bind(this)}/>
     
-              <input type="submit" value="Save" />
+              <button onClick={this.saveEducation}>Save</button>
             
-          </Form>
+          </div>
         );
       }
 }

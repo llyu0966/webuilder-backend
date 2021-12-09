@@ -13,6 +13,7 @@ class AboutMeLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
+            name: "about_me",
             layout: 0,
         }
     }
@@ -36,7 +37,7 @@ class AboutMeLayouts extends Component {
     }
 
     saveLayout = (layout) => {
-        fetch("/api/layouts/2", {
+        fetch("/api/layouts/about_me", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -63,13 +64,19 @@ class AboutMeLayouts extends Component {
       }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
-            });
+      fetch("/api/layouts", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
+      })
+        .then(res => res.json())
+        .catch(err => {
+          this.setState({
+            notFound: true,
           });
+        });
     }
     
     /*** 

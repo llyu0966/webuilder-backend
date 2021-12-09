@@ -12,6 +12,7 @@ class ContactMeLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
+            name: "contact_me",
             layout: 0,
         }
     }
@@ -35,7 +36,7 @@ class ContactMeLayouts extends Component {
     }
 
     saveLayout = (layout) => {
-        fetch("/api/layouts/6", {
+        fetch("/api/layouts/contact_me", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -62,13 +63,19 @@ class ContactMeLayouts extends Component {
       }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
-            });
+      fetch("/api/layouts", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
+      })
+        .then(res => res.json())
+        .catch(err => {
+          this.setState({
+            notFound: true,
           });
+        });
     }
 
     render() {

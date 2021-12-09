@@ -12,7 +12,9 @@ class ThemeLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
+            name: "theme",
             layout: 0,
+            checker: false
         }
     }
 
@@ -35,7 +37,7 @@ class ThemeLayouts extends Component {
     }
 
     saveLayout = (layout) => {
-        fetch("/api/layouts/1", {
+        fetch("/api/layouts/theme", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -62,13 +64,19 @@ class ThemeLayouts extends Component {
       }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
-            });
+      fetch("/api/layouts", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
+      })
+        .then(res => res.json())
+        .catch(err => {
+          this.setState({
+            notFound: true,
           });
+        });
     }
     
 

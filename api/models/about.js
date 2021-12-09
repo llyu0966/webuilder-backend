@@ -3,29 +3,25 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Layout extends Model {}
+  class About extends Model {}
 
-  Layout.init({
-    name: {
+  About.init({
+    content: {
       type: DataTypes.STRING,
-      primaryKey: true,
       validate: {
+        len: [3, 250],
         notEmpty: true,
       }
     },
-    layout: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-    }
   }, {
     sequelize,
-    timestamps: false, 
-    modelName: 'layout'
+    timestamps: false,
+    modelName: 'about'
   });
 
-  Layout.associate = (models) => {
+  About.associate = (models) => {
     // associations can be defined here
   };
 
-  return Layout;
+  return About;
 };

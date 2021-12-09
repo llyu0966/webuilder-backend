@@ -11,6 +11,7 @@ class EducationLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
+            name: "education",
             layout: 0,
         }
     }
@@ -34,7 +35,7 @@ class EducationLayouts extends Component {
     }
 
     saveLayout = (layout) => {
-        fetch("/api/layouts/3", {
+        fetch("/api/layouts/education", {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -61,13 +62,19 @@ class EducationLayouts extends Component {
       }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
-            });
+      fetch("/api/layouts", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
+      })
+        .then(res => res.json())
+        .catch(err => {
+          this.setState({
+            notFound: true,
           });
+        });
     }
     
     render() {
