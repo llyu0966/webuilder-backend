@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import NavBar from './navBar';
 import { UserContext } from './userContext';
 import ThemeLayouts from '../layouts/themeLayouts';
+import {ArrowRightSquare} from 'react-bootstrap-icons';
 
 function Themes() {
     let history = useHistory();
