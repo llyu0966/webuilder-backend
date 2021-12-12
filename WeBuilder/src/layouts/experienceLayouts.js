@@ -12,7 +12,8 @@ class ExperienceLayouts extends Component {
             bgColor_Two: "",
             error: false,
             success: false,
-            layout: 1,
+            name: "experience",
+            layout: 0,
         }
     }
 
@@ -20,64 +21,70 @@ class ExperienceLayouts extends Component {
         this.setState({
             bgColor_One: "rgba(30, 139, 195, 1)",
             bgColor_Two: "rgba(153, 42, 42, 0.01)",
-            layout: 2
+            layout: 1
         });
-        return this.saveLayout(event);
+        return this.saveLayout(1);
     }
 
     boxClick_Two = (event) => {
         this.setState({
             bgColor_One: "rgba(153, 42, 42, 0.01)",
             bgColor_Two: "rgba(30, 139, 195, 1)",
-            layout: 1
+            layout: 2
         });
-        return this.saveLayout(event);
+        return this.saveLayout(2);
     }
 
-    saveLayout = (event) => {
-        fetch("/api/layouts/4", {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({layout: this.state.layout}),
+    saveLayout = (layout) => {
+        fetch("/api/layouts/experience", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ layout: layout }),
         })
-          .then(res => {
-            if(res.ok) {
-              return res.json()
-            }
-    
-            throw new Error('Content validation');
-          })
-          .then(layout => {
-            this.setState({
-              success: true,
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
+
+                throw new Error('Content validation');
+            })
+            .then(layout => {
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                });
             });
-          })
-          .catch(err => {
-            this.setState({
-              error: true,
-            });
-          });
-      }
+    }
 
     componentDidMount() {
-        fetch("/api/layouts")
-          .then(res => res.json())
-          .catch(err => {
-            this.setState({
-              notFound: true,
+        fetch("/api/layouts", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: this.state.name, layout: this.state.layout }),
+        })
+            .then(res => res.json())
+            .catch(err => {
+                this.setState({
+                    notFound: true,
+                });
             });
-          });
     }
-    
+
 
     render() {
         return (
             <div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_One }}
                     onClick={this.boxClick_One}>
-                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px'   }}>
+                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col">
                                 <img src={logo} className="img-fluid" alt="avatar" width="80%"></img>
@@ -95,7 +102,7 @@ class ExperienceLayouts extends Component {
                 </div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_Two }}
                     onClick={this.boxClick_Two}>
-                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px'   }}>
+                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col-7">
                                 <div className="card-block px-2">

@@ -11,6 +11,8 @@ import Projects from "./pages/projects";
 import ContactMe from "./pages/contactMe";
 import Information from "./pages/information";
 import { UserContext } from "./pages/userContext";
+import LayoutsListPage from "./pages/LayoutsListPage";
+import DemoPortfolio from "./portfolio/demoPortfolio";
 
 
 class App extends React.Component {
@@ -53,6 +55,8 @@ class App extends React.Component {
             <Route exact path="/projects" component={Projects} />
             <Route exact path="/contactMe" component={ContactMe} />
             <Route exact path="/information" component={Information} />
+            <Route exact path="/demoPortfolio" component={DemoPortfolio} />
+            <Route exact path="/resultPage" component={LayoutsListPage} />
           </UserContext.Provider>
         </Switch>
 

@@ -1,40 +1,90 @@
 import React, { useState } from "react";
-import { Helmet } from 'react-helmet';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ReactDOM from 'react-dom';
-import { Plus } from 'react-bootstrap-icons';
-import {FormControl,Form} from 'react-bootstrap';
+import Cloudinary from './cloudinary';
+
 
 
 class TextBoxAboutMe extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            error: false,
+            success: false,
+            content: '',
+        }
+    }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.values.join(', '));
-    event.preventDefault();
-  }
+    contentChanged = (event) => {
+        this.setState({
+            content: event.target.value
+        });
+    }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-           
-           <Form.Group controlId="formFile" className="mb-3 input-file section-description">
-                <Form.Label>Input About Me Picture</Form.Label>
-                <Form.Control type="file" className="label-width"/>
-            </Form.Group>
+    savePost = (event) => {
+        fetch("/api/about/", {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ content: this.state.content }),
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
 
-            <form>
-                <p className="section-description"> Enter Your About Me Text Here: </p>
-                <label className="label-width">
-                <textarea className="description-input" rows={5}> </textarea>
-                </label>
-            </form> 
-      </form>
-    );
-  }
+                throw new Error('Content validation');
+            })
+            .then(aboutMe => {
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                });
+            });
+    }
+
+    render() {
+        let errorMessage = null;
+        if (this.state.error) {
+            errorMessage = (
+                <div className="alert alert-danger">
+                    "There was an error saving this text."
+                </div>
+            );
+        }
+
+
+
+
+        if (this.props.category) {
+            return (
+                <div>
+                    <p className="h2 enter-head">Input About Me Picture</p>
+                    <Cloudinary type="aboutMe" />
+                    {errorMessage}
+                    <p className="h2 enter-head"> Enter Your About Me Text Here: </p>
+                    <label className="label-width">
+                        <textarea
+                            className="description-input"
+                            value={this.state.content}
+                            onChange={this.contentChanged}
+                            rows={5}> </textarea>
+                    </label>
+                    <button onClick={this.savePost}>Save</button>
+
+                </div>
+            );
+        } else {
+            return (null);
+        }
+
+    }
+
 }
-
 
 export default TextBoxAboutMe;

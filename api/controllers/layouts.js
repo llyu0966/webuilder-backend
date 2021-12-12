@@ -16,30 +16,42 @@ const { Layout } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
   Layout.findAll({})
     .then(layouts => res.json(layouts));
 });
 
 
 router.post('/', (req, res) => {
-  let { layout } = req.body;
-  
-  Layout.create({ layout })
-    .then(layout => {
-      res.status(201).json(layout);
+  var name = req.body.name;
+  var layout = req.body.layout;
+
+  Layout.create({ name, layout })
+    .then(layouts => {
+      res.status(201).json(layouts);
     })
     .catch(err => {
       res.status(400).json(err);
     });
 });
 
+router.get('/:name', (req, res) => {
+  const { name } = req.params;
+  Layout.findByPk(name)
+    .then(layout => {
+      if (!layout) {
+        return res.sendStatus(404);
+      }
+
+      res.json(layout.layout);
+    });
+});
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   Layout.findByPk(id)
     .then(layout => {
-      if(!layout) {
+      if (!layout) {
         return res.sendStatus(404);
       }
 
@@ -52,7 +64,27 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   Layout.findByPk(id)
     .then(layout => {
-      if(!layout) {
+      if (!layout) {
+        return res.sendStatus(404);
+      }
+
+      layout.name = req.body.name;
+      layout.layout = req.body.layout;
+      layout.save()
+        .then(layout => {
+          res.json(layout);
+        })
+        .catch(err => {
+          res.status(400).json(err);
+        });
+    });
+});
+
+router.put('/:name', (req, res) => {
+  const { name } = req.params;
+  Layout.findByPk(name)
+    .then(layout => {
+      if (!layout) {
         return res.sendStatus(404);
       }
 
@@ -67,12 +99,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Layout.findByPk(id)
     .then(layout => {
-      if(!layout) {
+      if (!layout) {
         return res.sendStatus(404);
       }
 
