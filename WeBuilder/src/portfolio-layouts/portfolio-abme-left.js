@@ -17,7 +17,6 @@ class PortfolioABMELeft extends Component {
 
     }
 
-
     componentDidMount() {
         var id = this.props.id;
         fetch("/api/image/" + id)

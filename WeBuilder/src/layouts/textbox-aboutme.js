@@ -58,9 +58,6 @@ class TextBoxAboutMe extends React.Component {
             );
         }
 
-
-
-
         if (this.props.category) {
             return (
                 <div>

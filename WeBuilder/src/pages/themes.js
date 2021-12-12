@@ -27,7 +27,6 @@ function Themes() {
                     </div>
 
                     <div id="content" class="col-lg-8 col-md-8 col-12">
-
                         <ThemeLayouts />
                     </div>
 
@@ -39,7 +38,6 @@ function Themes() {
                 </div>
 
             </div>
-
         </div>
     );
 }

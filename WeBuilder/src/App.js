@@ -14,7 +14,6 @@ import { UserContext } from "./pages/userContext";
 import LayoutsListPage from "./pages/LayoutsListPage";
 import DemoPortfolio from "./portfolio/demoPortfolio";
 
-
 class App extends React.Component {
 
 
@@ -43,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <Router exact path="/">
-        <Redirect to="/homePage" />
+        <Redirect to="/HomePage" />
         <Switch>
           <UserContext.Provider value={this.state.category}>
             <Route exact path="/homePage" component={HomePage} />

@@ -18,69 +18,69 @@ const { About } = db;
 
 
 router.get('/', (req, res) => {
-    About.findAll({})
-        .then(about => res.json(about));
+  About.findAll({})
+    .then(about => res.json(about));
 });
 
 // to store the content of aboutMe
 router.post('/', (req, res) => {
-    // collected content from a user
-    let { content } = req.body;
+  // collected content from a user
+  let { content } = req.body;
 
-    About.create({ content })
-        .then(about => {
-            res.status(201).json(about);
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+  About.create({ content })
+    .then(about => {
+      res.status(201).json(about);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
 });
 
 
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    About.findByPk(id)
-        .then(about => {
-            if (!about) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  About.findByPk(id)
+    .then(about => {
+      if (!about) {
+        return res.sendStatus(404);
+      }
 
-            res.json(about);
-        });
+      res.json(about);
+    });
 });
 
 
 router.put('/:id', (req, res) => {
-    const { id } = req.params;
-    About.findByPk(id)
-        .then(about => {
-            if (!about) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  About.findByPk(id)
+    .then(about => {
+      if (!about) {
+        return res.sendStatus(404);
+      }
 
-            about.content = req.body.content;
-            about.save()
-                .then(about => {
-                    res.json(about);
-                })
-                .catch(err => {
-                    res.status(400).json(err);
-                });
+      about.content = req.body.content;
+      about.save()
+        .then(about => {
+          res.json(about);
+        })
+        .catch(err => {
+          res.status(400).json(err);
         });
+    });
 });
 
 
 router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    About.findByPk(id)
-        .then(about => {
-            if (!about) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  About.findByPk(id)
+    .then(about => {
+      if (!about) {
+        return res.sendStatus(404);
+      }
 
-            about.destroy();
-            res.sendStatus(204);
-        });
+      about.destroy();
+      res.sendStatus(204);
+    });
 });
 
 

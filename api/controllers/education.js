@@ -17,35 +17,35 @@ const { Education } = db;
 
 
 router.get('/', (req, res) => {
-    Education.findAll({})
-        .then(education => res.json(education));
+  Education.findAll({})
+    .then(education => res.json(education));
 });
 
 
 router.post('/', (req, res) => {
-    var header = req.body.header;
-    var description = req.body.description;
+  var header = req.body.header;
+  var description = req.body.description;
 
-    Education.create({ header, description })
-        .then(education => {
-            res.status(201).json(education);
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+  Education.create({ header, description })
+    .then(education => {
+      res.status(201).json(education);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
 });
 
 
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    Education.findByPk(id)
-        .then(education => {
-            if (!education) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  Education.findByPk(id)
+    .then(education => {
+      if (!education) {
+        return res.sendStatus(404);
+      }
 
-            res.json(education);
-        });
+      res.json(education);
+    });
 });
 
 /**  update 
@@ -70,16 +70,16 @@ router.put('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    Education.findByPk(id)
-        .then(education => {
-            if (!education) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  Education.findByPk(id)
+    .then(education => {
+      if (!education) {
+        return res.sendStatus(404);
+      }
 
-            education.destroy();
-            res.sendStatus(204);
-        });
+      education.destroy();
+      res.sendStatus(204);
+    });
 });
 
 

@@ -17,70 +17,70 @@ const { Contact } = db;
 
 
 router.get('/', (req, res) => {
-    Contact.findAll({})
-        .then(contacts => res.json(contacts));
+  Contact.findAll({})
+    .then(contacts => res.json(contacts));
 });
 
 
 router.post('/', (req, res) => {
-    var github = req.body.github;
-    var linkedIn = req.body.linkedIn;
-    var email = req.body.email;
+  var github = req.body.github;
+  var linkedIn = req.body.linkedIn;
+  var email = req.body.email;
 
-    Contact.create({ github, linkedIn, email })
-        .then(contact => {
-            res.status(201).json(contact);
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+  Contact.create({ github, linkedIn, email })
+    .then(contact => {
+      res.status(201).json(contact);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
 });
 
 
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    Contact.findByPk(id)
-        .then(contact => {
-            if (!contact) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  Contact.findByPk(id)
+    .then(contact => {
+      if (!contact) {
+        return res.sendStatus(404);
+      }
 
-            res.json(contact);
-        });
+      res.json(contact);
+    });
 });
 
 // update the layout
 router.put('/:id', (req, res) => {
-    const { id } = req.params;
-    Contact.findByPk(id)
-        .then(contact => {
-            if (!contact) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  Contact.findByPk(id)
+    .then(contact => {
+      if (!contact) {
+        return res.sendStatus(404);
+      }
 
-            Contact.contact = req.body.contact;
-            contact.save()
-                .then(contact => {
-                    res.json(contact);
-                })
-                .catch(err => {
-                    res.status(400).json(err);
-                });
+      Contact.contact = req.body.contact;
+      contact.save()
+        .then(contact => {
+          res.json(contact);
+        })
+        .catch(err => {
+          res.status(400).json(err);
         });
+    });
 });
 
 
 router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    Contact.findByPk(id)
-        .then(contact => {
-            if (!contact) {
-                return res.sendStatus(404);
-            }
+  const { id } = req.params;
+  Contact.findByPk(id)
+    .then(contact => {
+      if (!contact) {
+        return res.sendStatus(404);
+      }
 
-            contact.destroy();
-            res.sendStatus(204);
-        });
+      contact.destroy();
+      res.sendStatus(204);
+    });
 });
 
 
