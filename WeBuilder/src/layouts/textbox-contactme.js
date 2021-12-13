@@ -1,18 +1,23 @@
 import React from "react";
 
 class TextBoxContactMe extends React.Component {
-    /**
+  
     constructor(props) {
         super(props);
-        this.state = { name: [], description: [] };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = { 
+          error: false,
+          success: false,
+          github: '',
+          linkedIn: '',
+          email: '',
+        };
     }
-
+    /**
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.values.join(', '));
         event.preventDefault();
     }
-    */
+    
     state = {
         error: false,
         success: false,
@@ -20,6 +25,7 @@ class TextBoxContactMe extends React.Component {
         linkedIn: '',
         email: '',
       }
+      */
     
       githubChanged = (event) => {
         this.setState({
@@ -76,10 +82,10 @@ class TextBoxContactMe extends React.Component {
             </div>
           );
         }
-
+        if (this.props.category) {
         return (
             <div>
-            <p className="h2 enter-head">Enter Your Contact Info:</p>
+            <p className="h2 enter-head">Contact Me</p>
             <br/>
             {errorMessage}
             <input 
@@ -109,6 +115,9 @@ class TextBoxContactMe extends React.Component {
             <button onClick={this.saveContact}>Save</button>
         </div>
         );
+      } else {
+        return (null);
+      }
     }
 }
 

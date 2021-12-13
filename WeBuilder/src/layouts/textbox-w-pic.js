@@ -1,13 +1,17 @@
 import React from "react";
 import Cloudinary from './cloudinary';
-import { Form } from 'react-bootstrap';
 
 
 class TextBoxWPic extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: [], description: [] /*imageUrl: null, imageAlt: null,*/ };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = { 
+          name: [], 
+          description: [], 
+          /*imageUrl: null, imageAlt: null,*/ 
+          error: false,
+          success: false,
+        };
     }
 
     createUI(){
@@ -20,6 +24,34 @@ class TextBoxWPic extends React.Component {
             </div>
           )
           
+      }
+
+      saveProject = (event) => {
+        fetch("/api/project/", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({header: this.state.name[this.state.name.length-1], description: this.state.description[this.state.description.length-1]}),
+        })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
+            }
+    
+            throw new Error('project validation');
+          })
+          .then(project => {
+            this.setState({
+              success: true,
+            });
+          })
+          .catch(err => {
+            this.setState({
+              error: true,
+            });
+          });
       }
     
       handleChangeName(i, event) {
@@ -50,25 +82,27 @@ class TextBoxWPic extends React.Component {
         this.setState({ description });
       }
     
+      /** 
       handleSubmit(event) {
         alert('A name was submitted: ' + this.state.name.join(', '));
         event.preventDefault();
       }
-    
+      */
+
       render() {
         if (this.props.category) {
         return (
-          <Form onSubmit={this.handleSubmit}>
-               <Form.Label className="h2 enter-head">Project</Form.Label>
+          <div>
+               <p className="h2 enter-head">Project</p>
     
               {this.createUI()}  
               <br/>
     
               <input type='button' value='remove' onClick={this.removeClick.bind(this)}/>      
               <input type='button' value='add' onClick={this.addClick.bind(this)}/>
-              <input type="submit" value="Save" />
+              <button onClick={this.saveProject}>Save</button>
               
-          </Form>
+          </div>
         );
       } else {
         return (null);

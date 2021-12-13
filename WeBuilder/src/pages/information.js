@@ -93,7 +93,7 @@ function Information() {
                     </div>
                     <div>
                         {/*<Row><h3 className="enter-head">Contact Me </h3></Row>*/}
-                        <h2 className="enter-head"> Contact Me </h2>
+
                         <Row> <Col> <TextBoxContactMe category={msg.ContactMe} name="Contact Me" /> </Col> </Row>
                     </div>
 

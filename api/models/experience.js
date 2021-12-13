@@ -3,9 +3,9 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Education extends Model {}
+  class Experience extends Model {}
 
-  Education.init({
+  Experience.init({
     header: {
       type: DataTypes.STRING,
       validate: {
@@ -21,12 +21,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     timestamps: false,
-    modelName: 'education'
+    modelName: 'experience'
   });
 
-  Education.associate = (models) => {
+  Experience.associate = (models) => {
     // associations can be defined here
   };
 
-  return Education;
+  return Experience;
 };

@@ -3,9 +3,11 @@ import gitImg from "./git.png";
 import linkedImg from "./link.png";
 import emailImg from "./email.png";
 import projectImg from "./Project.png";
-import avatar from "./Blank-Avatar.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import PortfolioABMELeft from '../portfolio-layouts/portfolio-abme-left';
+import PortfolioEduLeft from '../portfolio-layouts/portfolio-edu-left';
+
 
 import { useHistory } from "react-router-dom";
 
@@ -33,7 +35,6 @@ function DemoPortfolio() {
 
                     <li class="nav-item float-right">
                     <a class="nav-link" href="#intro">About Me
-                
                     </a>
                     </li>
                     <li class="nav-item float-right">
@@ -54,52 +55,12 @@ function DemoPortfolio() {
         </div>
     </div>
     </nav>
-        <div class="intro" id="intro">
-            <br/>
-            <div class="container about"> 
-                <div class="row">
 
-                    <div class="textAbout col-lg">
-                        <h2 class="yellow">About Me</h2>
-                        
-                        <p class="lead " id="contact">
-                        I’m Farukh and I’m a junior at the City Univesity of New York majoring in Computer Science. 
-                        Currently I'm a full-stack web development fellow at CUNY Tech Prep, a selective JavaScript program for CUNY students, where I’m working on a portfolio building tool called WeBuilder.
-                         My goal for this project is to allow people to feel confident in their skills as they start their journey in the tech industry.
-                        A little more about myself...
-                        </p>
-                
-
-                    </div>
-
-                    <div class="imageAbout col-lg">
-                    <img src={avatar} class="img-fluid" alt="My Photo"  />
-                    </div>
-
-                </div>
-             
-        </div>
-        </div>
+        <PortfolioABMELeft />
+        
         <h1 class="titl yellow">Education and Experience</h1>
-        <div className="container"> 
-            <div className="row">
-                <h3 id="expEdu">Education</h3>
-            </div>
-            <div className="row">
-                
-                <div className="col-lg-12">
-                    
-                    <p className="schoolT">The City College of New York</p>
-                    <span className="edu"> May 2022</span>
-                    <p className="edu">Bachelor of Science, Computer Science and Multimedia Computing, GPA:3.7</p>
-                    
-                    <p className="edu">Relevant Coursework:</p>
-                    <p className="edu">JAVA Programming, Multimedia Computing, Modern Programming Techniques, Discrete Structures, Data Structures, Computer Architecture, Introduction to Digital Art, Analysis of Algorithms, Operating Systems, Design & Implementation of Large-Scale Applications, Programming Paradigms in C++</p>
-                    
-                    
-                </div>
-            </div>
-        </div>
+        <PortfolioEduLeft />
+
         <div className="container"> 
             <div className="row">
                 <h3 id="experience">Experience</h3>

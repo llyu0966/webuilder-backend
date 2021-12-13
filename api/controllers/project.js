@@ -1,16 +1,16 @@
-const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { About } = db;
+const project = require('../models/project');
+const { Project } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
-//    GET    /about
-//    POST   /about
-//    GET    /about/:id
-//    PUT    /about/:id
-//    DELETE /about/:id 
+//    GET    /project
+//    POST   /project
+//    GET    /project/:id
+//    PUT    /project/:id
+//    DELETE /project/:id 
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
@@ -18,20 +18,18 @@ const { About } = db;
 
 
 router.get('/', (req,res) => {
-    About.findOne({
-      order: [['id', 'desc']]
-    })
-    .then(about => res.json(about));
+  Project.findAll({})
+    .then(project => res.json(project));
 });
 
-// to store the content of aboutMe
+
 router.post('/', (req, res) => {
-  // collected content from a user
-  let { content } = req.body;
+  var header  = req.body.header;
+  var description  = req.body.description;
   
-  About.create({ content })
-    .then(about => {
-      res.status(201).json(about);
+  Project.create({ header, description })
+    .then(project => {
+      res.status(201).json(project);
     })
     .catch(err => {
       res.status(400).json(err);
@@ -41,46 +39,47 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  About.findByPk(id)
-    .then(about => {
-      if(!about) {
+  Project.findByPk(id)
+    .then(project => {
+      if(!project) {
         return res.sendStatus(404);
       }
 
-      res.json(about);
+      res.json(project);
     });
 });
 
-
+/**  update 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  About.findByPk(id)
-    .then(about => {
-      if(!about) {
+  Contact.findByPk(id)
+    .then(contact => {
+      if(!contact) {
         return res.sendStatus(404);
       }
 
-      about.content = req.body.content;
-      about.save()
-        .then(about => {
-          res.json(about);
+      Contact.contact = req.body.contact;
+      contact.save()
+        .then(contact => {
+          res.json(contact);
         })
         .catch(err => {
           res.status(400).json(err);
         });
     });
 });
+*/
 
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  About.findByPk(id)
-    .then(about => {
-      if(!about) {
+  Project.findByPk(id)
+    .then(project => {
+      if(!project) {
         return res.sendStatus(404);
       }
 
-      about.destroy();
+      project.destroy();
       res.sendStatus(204);
     });
 });

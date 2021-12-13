@@ -128,9 +128,21 @@ git push heroku main
 │   │   └── config.json
 │   ├── <strong>controllers</strong>
 │   │   ├── appConfig.js
+│   │   ├── about.js
+│   │   ├── contact.js
+│   │   ├── education.js
+│   │   ├── experience.js
+│   │   ├── image.js
+│   │   ├── project.js
 │   │   ├── index.js
 │   │   └── layouts.js
 │   └── <strong>models</strong>
+│       ├── about.js
+│       ├── contact.js
+│       ├── education.js
+│       ├── experience.js
+│       ├── project.js
+│       ├── image.js
 │       ├── index.js
 │       └── layout.js
 ├── <strong>WeBuilder</strong>
@@ -149,10 +161,12 @@ git push heroku main
 │       ├── <strong>layouts</strong>
 │       │   ├── aboutMeLayouts.js
 │       │   ├── contactMeLayouts.js
+│       │   ├── cloudinary.js
 │       │   ├── education.js
 │       │   ├── experienceLayouts.js
 │       │   ├── projectLayouts.js
 │       │   ├── textbox-aboutme.js
+│       │   ├── textbox-experience.js
 │       │   ├── textbox-contactme.js
 │       │   ├── textbox-w-pic.js
 │       │   ├── textbox.js
@@ -180,6 +194,21 @@ git push heroku main
 │       │   ├── weBuilder.svg
 │       │   ├── weBuilder(hover).svg
 │       │   └── WeBuilderLogo.png
+│       ├── <strong>portfolio</strong>
+│       │   ├── Blank-Avatar.png
+│       │   ├── demoPorfolio.js
+│       │   ├── email.png
+│       │   ├── git.png
+│       │   ├── link.png
+│       │   ├── portfolio_style.css
+│       │   └── Project.png
+│       ├── <strong>portfolio-layouts</strong>
+│       │   ├── portfolio-abme-left.js
+│       │   ├── portfolio-contact-midl.js
+│       │   ├── portfolio-edu-left.js
+│       │   ├── portfolio-ex-left.js
+│       │   ├── portfolio-navBar.js
+│       │   └── portfolio-project-right.js
 │       ├── reportWebVitals.js
 │       ├── serviceWorker.js
 │       └── setupTests.js

@@ -110,6 +110,7 @@ class TextBox extends React.Component {
             </div>
           );
         }
+        if (this.props.category) {
         return (
           <div>
               <p className="h2 enter-head">Education</p>
@@ -125,6 +126,9 @@ class TextBox extends React.Component {
             
           </div>
         );
+      } else {
+        return (null);
+      }
       }
 }
 

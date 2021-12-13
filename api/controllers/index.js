@@ -6,6 +6,8 @@ const router = express.Router();
 const layoutsController = require('./layouts.js');
 const aboutMeController = require('./about.js');
 const educationController = require('./education.js');
+const experienceController = require('./experience.js');
+const projectController = require('./project.js');
 const contactController = require('./contact.js');
 const appConfigController = require('./appConfig.js');
 
@@ -14,6 +16,8 @@ const appConfigController = require('./appConfig.js');
 router.use('/layouts', layoutsController);
 router.use('/about', aboutMeController);
 router.use('/education', educationController);
+router.use('/experience', experienceController);
+router.use('/project', projectController);
 router.use('/contact', contactController);
 router.use('/application-configuration', appConfigController);
 
