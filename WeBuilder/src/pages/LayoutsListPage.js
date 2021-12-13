@@ -15,21 +15,21 @@ class LayoutsListPage extends React.Component {
       .then(layouts => {
         this.setState({
           loading: false,
-          layouts: layouts.map((p,ii) => <Layout {...p} key={ii} />),
+          layouts: layouts.map((p, ii) => <Layout {...p} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
   }
 
   render() {
-    if(this.state.loading) {
+    if (this.state.loading) {
       return <Loading />;
     }
 
     return (
       <div className="container-fluid text-center">
         <div className="row justify-content-center">
-          { this.state.layouts }
+          {this.state.layouts}
         </div>
       </div>
     );

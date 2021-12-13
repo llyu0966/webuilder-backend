@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import NavBar from './navBar';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from './userContext';
-import {ArrowRightSquare} from 'react-bootstrap-icons';
+import { ArrowRightSquare } from 'react-bootstrap-icons';
 import ExperienceLayouts from '../layouts/experienceLayouts';
 
 function Experience() {
@@ -31,13 +31,13 @@ function Experience() {
                         </div>
 
                         <div id="content" class="col-lg-8 col-md-8 col-12">
-                            
+
                             <ExperienceLayouts />
                         </div>
                         <div id="nextButton" class="col-lg-2 col-md-2 col-12">
-                                <button onClick={() => {
+                            <button onClick={() => {
                                 history.push('/projects')
-                                }} href={'/projects'} id="next"><ArrowRightSquare/></button>
+                            }} href={'/projects'} id="next"><ArrowRightSquare /></button>
                         </div>
 
                     </div>

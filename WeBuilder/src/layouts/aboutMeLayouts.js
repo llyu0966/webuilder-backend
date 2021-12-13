@@ -38,47 +38,47 @@ class AboutMeLayouts extends Component {
 
     saveLayout = (layout) => {
         fetch("/api/layouts/about_me", {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({layout: layout}),
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ layout: layout }),
         })
-          .then(res => {
-            if(res.ok) {
-              return res.json()
-            }
-    
-            throw new Error('Content validation');
-          })
-          .then(layout => {
-            this.setState({
-              success: true,
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
+
+                throw new Error('Content validation');
+            })
+            .then(layout => {
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                });
             });
-          })
-          .catch(err => {
-            this.setState({
-              error: true,
-            });
-          });
-      }
+    }
 
     componentDidMount() {
-      fetch("/api/layouts", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
-      })
-        .then(res => res.json())
-        .catch(err => {
-          this.setState({
-            notFound: true,
-          });
-        });
+        fetch("/api/layouts", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: this.state.name, layout: this.state.layout }),
+        })
+            .then(res => res.json())
+            .catch(err => {
+                this.setState({
+                    notFound: true,
+                });
+            });
     }
-    
+
     /*** 
     boxClick_One = (e) => {
         this.setState({
@@ -88,7 +88,6 @@ class AboutMeLayouts extends Component {
         })
         
     }
-
     boxClick_Two = (e) => {
         this.setState({
             bgColor_One: "rgba(153, 42, 42, 0.01)",
@@ -102,7 +101,7 @@ class AboutMeLayouts extends Component {
     render() {
         return (
             <div>
-                <div className="aboutMe" 
+                <div className="aboutMe"
                     style={{ backgroundColor: this.state.bgColor_One }}
                     onClick={this.boxClick_One}>
                     <Card className="color-nav" style={{ padding: '20px', height: '14rem', borderRadius: '25px' }}>
@@ -120,10 +119,10 @@ class AboutMeLayouts extends Component {
                         </div>
                     </Card>
                 </div>
-                <div className="aboutMe" 
+                <div className="aboutMe"
                     style={{ backgroundColor: this.state.bgColor_Two }}
                     onClick={this.boxClick_Two}>
-                    <Card className="color-nav" style={{ padding: '20px', height: '14rem', borderRadius: '25px'  }}>
+                    <Card className="color-nav" style={{ padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col-7">
                                 <div className="card-block px-2">

@@ -37,54 +37,54 @@ class ExperienceLayouts extends Component {
 
     saveLayout = (layout) => {
         fetch("/api/layouts/experience", {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({layout: layout}),
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ layout: layout }),
         })
-          .then(res => {
-            if(res.ok) {
-              return res.json()
-            }
-    
-            throw new Error('Content validation');
-          })
-          .then(layout => {
-            this.setState({
-              success: true,
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
+
+                throw new Error('Content validation');
+            })
+            .then(layout => {
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                });
             });
-          })
-          .catch(err => {
-            this.setState({
-              error: true,
-            });
-          });
-      }
+    }
 
     componentDidMount() {
         fetch("/api/layouts", {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
-          })
+            body: JSON.stringify({ name: this.state.name, layout: this.state.layout }),
+        })
             .then(res => res.json())
             .catch(err => {
-              this.setState({
-                notFound: true,
-              });
+                this.setState({
+                    notFound: true,
+                });
             });
     }
-    
+
 
     render() {
         return (
             <div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_One }}
                     onClick={this.boxClick_One}>
-                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px'   }}>
+                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col">
                                 <img src={logo} className="img-fluid" alt="avatar" width="80%"></img>
@@ -102,7 +102,7 @@ class ExperienceLayouts extends Component {
                 </div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_Two }}
                     onClick={this.boxClick_Two}>
-                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px'   }}>
+                    <Card style={{ backgroundColor: '#C2A5FF', padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col-7">
                                 <div className="card-block px-2">

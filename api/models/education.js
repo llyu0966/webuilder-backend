@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Education extends Model {}
+  class Education extends Model { }
 
   Education.init({
     header: {
@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     description: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true,
-        }
-      },
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      }
+    },
   }, {
     sequelize,
     timestamps: false,

@@ -16,17 +16,17 @@ const { Contact } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
   Contact.findAll({})
     .then(contacts => res.json(contacts));
 });
 
 
 router.post('/', (req, res) => {
-  var github  = req.body.github;
-  var linkedIn  = req.body.linkedIn;
-  var email  = req.body.email;
-  
+  var github = req.body.github;
+  var linkedIn = req.body.linkedIn;
+  var email = req.body.email;
+
   Contact.create({ github, linkedIn, email })
     .then(contact => {
       res.status(201).json(contact);
@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   Contact.findByPk(id)
     .then(contact => {
-      if(!contact) {
+      if (!contact) {
         return res.sendStatus(404);
       }
 
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   Contact.findByPk(id)
     .then(contact => {
-      if(!contact) {
+      if (!contact) {
         return res.sendStatus(404);
       }
 
@@ -74,7 +74,7 @@ router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Contact.findByPk(id)
     .then(contact => {
-      if(!contact) {
+      if (!contact) {
         return res.sendStatus(404);
       }
 

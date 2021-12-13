@@ -11,18 +11,18 @@ class PortfolioContactMidl extends Component {
     render() {
         return (
             <div>
-                <div className="container"> 
-                <div className="row">
-            
-                    <div className="contact" id="contact">
-                        <h1 className="titl yellow contactImg">Contact Me:</h1>
-                        <a target="_blank" href="https://github.com/a-gusenkov"  ><img src={ gitImg } className="img-fluid gitImg contactI" alt=""/></a>
-                        <a target="_blank" href="https://www.linkedin.com/in/anastasia-gusenkov/" ><img src={ linkedImg} className="img-fluid lnkImg contactI" alt="" /></a>
-                        <a target="_blank" href="https://www.linkedin.com/in/anastasia-gusenkov/" ><img src={ emailImg } className="img-fluid lnkImg contactI" alt=""/></a>
-                        
+                <div className="container">
+                    <div className="row">
+
+                        <div className="contact" id="contact">
+                            <h1 className="titl yellow contactImg">Contact Me:</h1>
+                            <a target="_blank" href="https://github.com/a-gusenkov"  ><img src={gitImg} className="img-fluid gitImg contactI" alt="" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/anastasia-gusenkov/" ><img src={linkedImg} className="img-fluid lnkImg contactI" alt="" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/anastasia-gusenkov/" ><img src={emailImg} className="img-fluid lnkImg contactI" alt="" /></a>
+
+                        </div>
                     </div>
-                    </div>
-            </div>
+                </div>
             </div>
         );
     }

@@ -36,53 +36,53 @@ class EducationLayouts extends Component {
 
     saveLayout = (layout) => {
         fetch("/api/layouts/education", {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({layout: layout}),
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ layout: layout }),
         })
-          .then(res => {
-            if(res.ok) {
-              return res.json()
-            }
-    
-            throw new Error('Content validation');
-          })
-          .then(layout => {
-            this.setState({
-              success: true,
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
+
+                throw new Error('Content validation');
+            })
+            .then(layout => {
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                });
             });
-          })
-          .catch(err => {
-            this.setState({
-              error: true,
-            });
-          });
-      }
+    }
 
     componentDidMount() {
-      fetch("/api/layouts", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name: this.state.name, layout: this.state.layout}),
-      })
-        .then(res => res.json())
-        .catch(err => {
-          this.setState({
-            notFound: true,
-          });
-        });
+        fetch("/api/layouts", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: this.state.name, layout: this.state.layout }),
+        })
+            .then(res => res.json())
+            .catch(err => {
+                this.setState({
+                    notFound: true,
+                });
+            });
     }
-    
+
     render() {
         return (
             <div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_One }}
                     onClick={this.boxClick_One}>
-                    <Card style={{ padding: '20px', height: '14rem', borderRadius: '25px'  }}>
+                    <Card style={{ padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col-2">
                                 <img src={logo} className="img-fluid" alt="logo" style={{ justifyContent: 'center', padding: '20px', marginTop: '20px' }} width="100%" height="100%"></img>
@@ -100,7 +100,7 @@ class EducationLayouts extends Component {
                 </div>
                 <div className="aboutMe" style={{ backgroundColor: this.state.bgColor_Two }}
                     onClick={this.boxClick_Two}>
-                    <Card style={{ padding: '20px', height: '14rem', borderRadius: '25px'   }}>
+                    <Card style={{ padding: '20px', height: '14rem', borderRadius: '25px' }}>
                         <div className="row no-gutters">
                             <div className="col">
                                 <div className="card-block px-2">

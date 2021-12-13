@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import NavBar from './navBar';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from './userContext';
-import {ArrowRightSquare} from 'react-bootstrap-icons';
+import { ArrowRightSquare } from 'react-bootstrap-icons';
 import ProjectLayouts from '../layouts/projectLayouts';
 function Projects() {
 
@@ -33,9 +33,9 @@ function Projects() {
                             <ProjectLayouts />
                         </div>
                         <div id="nextButton" class="col-lg-2 col-md-2 col-12">
-                                <button onClick={() => {
+                            <button onClick={() => {
                                 history.push('/contactMe')
-                                }} href={'/contactMe'} id="next"><ArrowRightSquare/></button>
+                            }} href={'/contactMe'} id="next"><ArrowRightSquare /></button>
                         </div>
                     </div>
 
