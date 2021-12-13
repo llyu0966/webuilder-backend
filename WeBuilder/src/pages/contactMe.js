@@ -5,8 +5,7 @@ import NavBar from './navBar';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from './userContext';
 import ContactMeLayouts from '../layouts/contactMeLayouts';
-import {ArrowRightSquare} from 'react-bootstrap-icons';
-
+import { ArrowRightSquare } from 'react-bootstrap-icons';
 function ContactMe() {
 
     let history = useHistory();
@@ -15,7 +14,6 @@ function ContactMe() {
     if (msg.ContactMe) {
         return (
             <div>
-            <body>
                 <Helmet>
                     <style>{'body { background: #6D44C5; }'}</style>
                 </Helmet>
@@ -35,16 +33,14 @@ function ContactMe() {
                             <ContactMeLayouts />
                         </div>
                         <div id="nextButton" class="col-lg-2 col-md-2 col-12">
-                                <button onClick={() => {
+                            <button onClick={() => {
                                 history.push('/information')
-                                }} href={'/information'} id="next"><ArrowRightSquare/></button>
+                            }} href={'/information'} id="next"><ArrowRightSquare /></button>
                         </div>
                     </div>
 
                 </div>
-
-            </body>
-        </div>
+            </div>
         );
     } else {
         return <Redirect to="/information" />

@@ -16,16 +16,16 @@ const { Education } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
   Education.findAll({})
     .then(education => res.json(education));
 });
 
 
 router.post('/', (req, res) => {
-  var header  = req.body.header;
-  var description  = req.body.description;
-  
+  var header = req.body.header;
+  var description = req.body.description;
+
   Education.create({ header, description })
     .then(education => {
       res.status(201).json(education);
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   Education.findByPk(id)
     .then(education => {
-      if(!education) {
+      if (!education) {
         return res.sendStatus(404);
       }
 
@@ -56,7 +56,6 @@ router.put('/:id', (req, res) => {
       if(!contact) {
         return res.sendStatus(404);
       }
-
       Contact.contact = req.body.contact;
       contact.save()
         .then(contact => {
@@ -73,8 +72,8 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Education.findByPk(id)
-    .then(education=> {
-      if(!education) {
+    .then(education => {
+      if (!education) {
         return res.sendStatus(404);
       }
 

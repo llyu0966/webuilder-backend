@@ -10,7 +10,7 @@ const experienceController = require('./experience.js');
 const projectController = require('./project.js');
 const contactController = require('./contact.js');
 const appConfigController = require('./appConfig.js');
-
+const imagesController = require('./images.js');
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 router.use('/layouts', layoutsController);
@@ -19,6 +19,7 @@ router.use('/education', educationController);
 router.use('/experience', experienceController);
 router.use('/project', projectController);
 router.use('/contact', contactController);
+router.use('/image', imagesController);
 router.use('/application-configuration', appConfigController);
 
 

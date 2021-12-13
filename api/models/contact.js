@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Contact extends Model {}
+  class Contact extends Model { }
 
   Contact.init({
     github: {
@@ -13,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     linkedIn: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true,
-        }
-      },
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      }
+    },
     email: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true,
-        }
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      }
     },
   }, {
     sequelize,

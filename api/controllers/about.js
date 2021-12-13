@@ -28,7 +28,7 @@ router.get('/', (req,res) => {
 router.post('/', (req, res) => {
   // collected content from a user
   let { content } = req.body;
-  
+
   About.create({ content })
     .then(about => {
       res.status(201).json(about);
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   About.findByPk(id)
     .then(about => {
-      if(!about) {
+      if (!about) {
         return res.sendStatus(404);
       }
 
@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   About.findByPk(id)
     .then(about => {
-      if(!about) {
+      if (!about) {
         return res.sendStatus(404);
       }
 
@@ -76,7 +76,7 @@ router.delete('/:id', (req, res) => {
   const { id } = req.params;
   About.findByPk(id)
     .then(about => {
-      if(!about) {
+      if (!about) {
         return res.sendStatus(404);
       }
 

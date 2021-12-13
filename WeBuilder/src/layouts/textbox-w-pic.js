@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Row from 'react-bootstrap/Row';
+import { FormControl, Form } from 'react-bootstrap';
 import Cloudinary from './cloudinary';
 
 
@@ -14,13 +16,14 @@ class TextBoxWPic extends React.Component {
         };
     }
 
-    createUI(){
-        return this.state.name.map((el, i) => 
-          
+
+    createUI() {
+
+        return this.state.name.map((el, i) =>
             <div key={i}>
-              <Cloudinary />
-              <input type="text" name={el||''}   className="name-input" placeholder="Header Name" onChange={this.handleChangeName.bind(this, i)} />
-              <textarea  description={el||''}  className="description-input" placeholder="Description" onChange={this.handleChangeDescription.bind(this, i)} rows={5}/>
+                <Cloudinary type="Projects" />
+                <input type="text" name={el || ''} className="name-input" placeholder="Header Name" onChange={this.handleChangeName.bind(this, i)} />
+                <textarea description={el || ''} className="description-input" placeholder="Description" onChange={this.handleChangeDescription.bind(this, i)} rows={5} />
             </div>
           )
           
@@ -68,17 +71,18 @@ class TextBoxWPic extends React.Component {
       addClick(){
                 
         /*TextBox.setState(prevState => ({ values: [...prevState.values, '']}))*/
-        this.setState(prevState => ({ name: [...prevState.name, '']}))
-        this.setState(prevState => ({ description: [...prevState.description, '']}))
-      }
-      
-      removeClick(i){
-         let name = [...this.state.name];
-         name.splice(i,1);
-         this.setState({ name });
-    
+        this.setState(prevState => ({ name: [...prevState.name, ''] }))
+        this.setState(prevState => ({ description: [...prevState.description, ''] }))
+
+    }
+
+    removeClick(i) {
+        let name = [...this.state.name];
+        name.splice(i, 1);
+        this.setState({ name });
+
         let description = [...this.state.description];
-        description.splice(i,1);
+        description.splice(i, 1);
         this.setState({ description });
       }
     

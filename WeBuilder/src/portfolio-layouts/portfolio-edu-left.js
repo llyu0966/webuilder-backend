@@ -9,22 +9,25 @@ class PortfolioEduLeft extends Component {
         super(props);
         this.state = 
         { 
-          header:[],
-          description:[], 
+            education: {
+                header: "",
+                description: "",
+            },
           error: false,
           success: false,
         };
     }
 
     componentDidMount() {
-        fetch("/api/education", {
+        var id = this.props.id;
+        fetch("/api/education/" + id, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           },
         })
           .then(res => res.json())
-          .then(res => this.setState({ header: [...this.state.header, res.header], description: [...this.state.description, res.description] }))
+          .then(education => this.setState({ education: education }))
           .catch(err => {
             this.setState({
               notFound: true,
@@ -35,23 +38,25 @@ class PortfolioEduLeft extends Component {
     render() {
         return (
             <div>
-                <div className="container"> 
+                <div className="container">
                     <div className="row">
-                    <h3 id="expEdu">Education</h3>
+                        <h3 id="expEdu">Education</h3>
                     </div>
                     <div className="row">
-                
+
                         <div className="col-lg-12">
-                            
-                            <p className="schoolT">{this.state.header[1]}</p>
+
+                            <p className="schoolT">{this.state.education.header}</p>
+                            <p className="edu">{this.state.education.description}</p>
+                            {/**<p className="schoolT">The City College of New York</p>
                             <span className="edu"> May 2022</span>
                             <p className="edu">Bachelor of Science, Computer Science and Multimedia Computing, GPA:3.7</p>
-                            
+
                             <p className="edu">Relevant Coursework:</p>
-                            <p className="edu">{this.state.description[1]}</p>
-                            
-                            
-                    </div>
+                            <p className="edu">JAVA Programming, Multimedia Computing, Modern Programming Techniques, Discrete Structures, Data Structures, Computer Architecture, Introduction to Digital Art, Analysis of Algorithms, Operating Systems, Design & Implementation of Large-Scale Applications, Programming Paradigms in C++</p>
+                            */}
+
+                        </div>
                     </div>
                 </div>
             </div>

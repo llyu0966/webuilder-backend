@@ -5,7 +5,7 @@ import NavBar from './navBar';
 import EducationLayouts from '../layouts/education';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from './userContext';
-import {ArrowRightSquare} from 'react-bootstrap-icons';
+import { ArrowRightSquare } from 'react-bootstrap-icons';
 
 function Education() {
 
@@ -36,8 +36,8 @@ function Education() {
                             </div>
                             <div id="nextButton" class="col-lg-2 col-md-2 col-12">
                                 <button onClick={() => {
-                                history.push('/experience')
-                                }} href={'/experience'} id="next"><ArrowRightSquare/></button>
+                                    history.push('/experience')
+                                }} href={'/experience'} id="next"><ArrowRightSquare /></button>
                             </div>
                         </div>
 

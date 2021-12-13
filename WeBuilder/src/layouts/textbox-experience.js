@@ -56,7 +56,6 @@ class TextBoxExp extends React.Component {
           <div key={i}>
               
             <input type="text" name={el||''}   className="name-input" placeholder="Header Name" onChange={this.handleChangeName.bind(this, i)} />
-
           </div>  
         
       )

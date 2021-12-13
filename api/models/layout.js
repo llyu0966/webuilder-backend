@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Layout extends Model {}
+  class Layout extends Model { }
 
   Layout.init({
     name: {
@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     layout: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   }, {
     sequelize,
-    timestamps: false, 
+    timestamps: false,
     modelName: 'layout'
   });
 
