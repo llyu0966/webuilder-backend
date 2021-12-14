@@ -18,7 +18,9 @@ const { Project } = db;
 
 
 router.get('/', (req,res) => {
-  Project.findAll({})
+  Project.findOne({
+    order: [['id', 'desc']]
+  })
     .then(project => res.json(project));
 });
 

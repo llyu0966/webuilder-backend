@@ -19,8 +19,7 @@ class PortfolioEduLeft extends Component {
     }
 
     componentDidMount() {
-        var id = this.props.id;
-        fetch("/api/education/" + id, {
+        fetch("/api/education/", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

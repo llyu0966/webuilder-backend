@@ -19,8 +19,7 @@ class PortfolioExLeft extends Component {
     }
 
     componentDidMount() {
-        var id = this.props.id;
-        fetch("/api/experience/" + id, {
+        fetch("/api/experience/", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

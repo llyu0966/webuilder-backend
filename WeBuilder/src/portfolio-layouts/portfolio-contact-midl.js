@@ -23,8 +23,7 @@ class PortfolioContactMidl extends Component {
     }
 
     componentDidMount() {
-        var id = this.props.id;
-        fetch("/api/contact/" + id, {
+        fetch("/api/contact/", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
