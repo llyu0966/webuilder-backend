@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './portfolio_style.css';
-import projectImg from "./Project.png";
+import '../portfolio/portfolio_style.css';
 
 
 class PortfolioProjLeft extends Component {
