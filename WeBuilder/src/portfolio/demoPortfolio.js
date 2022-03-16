@@ -21,14 +21,14 @@ function DemoPortfolio() {
                 <PortfolioABMELeft id={"1"} />
             </div>
             <h1 class="titl yellow">Education and Experience</h1>
-                <PortfolioEduLeft id={"1"} />
-                <PortfolioExLeft id={"1"} />
+                <PortfolioEduLeft />
+                <PortfolioExLeft />
 
             <div>
                 <PortfolioProjRight id={"2"} />
             </div>
             <div>
-                <PortfolioContactMidl id={"1"} />
+                <PortfolioContactMidl />
             </div>
         </div>
 

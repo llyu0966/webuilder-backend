@@ -37,7 +37,7 @@ class PortfolioProjRight extends Component {
                 });
             });
 
-        fetch("/api/project/1", {
+        fetch("/api/project/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

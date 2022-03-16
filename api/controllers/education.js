@@ -17,7 +17,9 @@ const { Education } = db;
 
 
 router.get('/', (req, res) => {
-  Education.findAll({})
+  Education.findOne({
+    order: [['id', 'desc']]
+  })
     .then(education => res.json(education));
 });
 

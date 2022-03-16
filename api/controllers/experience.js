@@ -17,7 +17,9 @@ const { Experience } = db;
 
 
 router.get('/', (req,res) => {
-  Experience.findAll({})
+  Experience.findOne({
+    order: [['id', 'desc']]
+  })
     .then(experience => res.json(experience));
 });
 

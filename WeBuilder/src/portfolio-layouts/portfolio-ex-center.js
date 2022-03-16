@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './portfolio_style.css';
+import '../portfolio/portfolio_style.css';
 
 
 class PortfolioExCenter extends Component {

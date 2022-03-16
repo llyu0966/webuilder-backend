@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './portfolio_style.css';
+import '../portfolio/portfolio_style.css';
 import gitImg from "./git.png";
 import linkedImg from "./link.png";
 import emailImg from "./email.png";
