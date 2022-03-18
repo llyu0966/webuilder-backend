@@ -1,6 +1,8 @@
 # WeBuilder
 An easy-to-use Portfolio Builder App for CUNY Tech Prep team project with React, Express.js, and Sequelize.js
 
+
+<img src="https://github.com/Farukh-AVA/webuilder-backend/blob/main/walkthrough.gif" width=500><br>
 ## Stack
 
 *API*
